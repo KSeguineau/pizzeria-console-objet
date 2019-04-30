@@ -1,13 +1,34 @@
 package fr.diginamic.menupizzeria.model;
 
+/**
+ * Classe representant une pizza
+ * 
+ * @author Kevin.s
+ *
+ */
 public class Pizza {
 
+	/** compteur : int */
 	static int compteur = 0;
+	/** id : int */
 	private int id;
+	/** code : String */
 	private String code;
+	/** libelle : String */
 	private String libelle;
+	/** prix : double */
 	private double prix;
 
+	/**
+	 * Constructeur
+	 * 
+	 * @param code
+	 *            code de la pizza
+	 * @param libelle
+	 *            nom de la pizza
+	 * @param prix
+	 *            prix de la pizza
+	 */
 	public Pizza(String code, String libelle, double prix) {
 		super();
 		this.code = code;
@@ -17,6 +38,18 @@ public class Pizza {
 		compteur++;
 	}
 
+	/**
+	 * Constructeur
+	 * 
+	 * @param id
+	 *            identifiant de la pizza
+	 * @param code
+	 *            code de la pizza
+	 * @param libelle
+	 *            nom de la pizza
+	 * @param prix
+	 *            prix de la pizza
+	 */
 	public Pizza(int id, String code, String libelle, double prix) {
 		super();
 		this.id = id;
@@ -69,30 +102,68 @@ public class Pizza {
 		return true;
 	}
 
+	/**
+	 * Getter
+	 * 
+	 * @return the code
+	 */
 	public String getCode() {
 		return code;
 	}
 
+	/**
+	 * Setters
+	 * 
+	 * @param code
+	 *            the code to set
+	 */
 	public void setCode(String code) {
 		this.code = code;
 	}
 
+	/**
+	 * Getter
+	 * 
+	 * @return the libelle
+	 */
 	public String getLibelle() {
 		return libelle;
 	}
 
+	/**
+	 * Setters
+	 * 
+	 * @param libelle
+	 *            the libelle to set
+	 */
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
 
+	/**
+	 * Getter
+	 * 
+	 * @return the prix
+	 */
 	public double getPrix() {
 		return prix;
 	}
 
+	/**
+	 * Setters
+	 * 
+	 * @param prix
+	 *            the prix to set
+	 */
 	public void setPrix(double prix) {
 		this.prix = prix;
 	}
 
+	/**
+	 * Getter
+	 * 
+	 * @return the id
+	 */
 	public int getId() {
 		return id;
 	}
