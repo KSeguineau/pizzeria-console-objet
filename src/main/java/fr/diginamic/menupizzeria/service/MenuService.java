@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import fr.diginamic.menupizzeria.dao.IPizzaDao;
 import fr.diginamic.menupizzeria.exception.PrixException;
+import fr.diginamic.menupizzeria.exception.StockageExcepion;
 import fr.diginamic.menupizzeria.model.Pizza;
 
 /**
@@ -21,8 +22,9 @@ public abstract class MenuService {
 	 *            permet de récuperer les entrées de l'utilisateur
 	 * @param dao
 	 *            objet stockant et manipulant des pizzas
+	 * @throws StockageExcepion
 	 */
-	public abstract void executeUC(Scanner scanner, IPizzaDao dao);
+	public abstract void executeUC(Scanner scanner, IPizzaDao dao) throws StockageExcepion;
 
 	/**
 	 * retourne une classe qui correspond au service demandé

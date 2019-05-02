@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import fr.diginamic.menupizzeria.dao.IPizzaDao;
 import fr.diginamic.menupizzeria.dao.PizzaMemDao;
+import fr.diginamic.menupizzeria.exception.StockageExcepion;
 import fr.diginamic.menupizzeria.service.MenuService;
 
 /**
@@ -25,7 +26,11 @@ public class PizzeriaAdminConsoleApp {
 			int choix = scanner.nextInt();
 
 			if (choix == 1 || choix == 2 || choix == 3 || choix == 4) {
-				MenuService.factory(choix).executeUC(scanner, dao);
+				try {
+					MenuService.factory(choix).executeUC(scanner, dao);
+				} catch (StockageExcepion e) {
+					System.out.println(e.getMessage());
+				}
 			} else if (choix == 99) {
 				System.out.println("Aurevoir :(");
 				sortir = true;

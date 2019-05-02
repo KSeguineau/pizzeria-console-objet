@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 import fr.diginamic.menupizzeria.dao.IPizzaDao;
 import fr.diginamic.menupizzeria.exception.PrixException;
+import fr.diginamic.menupizzeria.exception.StockageExcepion;
+import fr.diginamic.menupizzeria.exception.UpdatePizzaException;
 
 /**
  * Classe représentant le service de modification d'une pizza
@@ -14,7 +16,7 @@ import fr.diginamic.menupizzeria.exception.PrixException;
 public class ModifierPizzaService extends MenuService {
 
 	@Override
-	public void executeUC(Scanner scanner, IPizzaDao dao) {
+	public void executeUC(Scanner scanner, IPizzaDao dao) throws StockageExcepion {
 		dao.findAllPizzas().forEach(p -> System.out.println(p));
 		System.out.println("Veuillez choisir le code de la pizza à modifier");
 		String code = scanner.next();
@@ -24,6 +26,8 @@ public class ModifierPizzaService extends MenuService {
 			} catch (PrixException e) {
 				System.out.println(e.getMessage());
 			}
+		} else {
+			throw new UpdatePizzaException("Aucune pizza avec ce code n'à été trouvée");
 		}
 	}
 
