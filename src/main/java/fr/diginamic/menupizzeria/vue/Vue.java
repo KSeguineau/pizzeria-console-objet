@@ -3,8 +3,6 @@ package fr.diginamic.menupizzeria.vue;
 import static javax.swing.GroupLayout.Alignment.CENTER;
 
 import java.awt.Container;
-import java.awt.EventQueue;
-import java.awt.event.ActionListener;
 
 import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
@@ -12,15 +10,17 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JList;
-import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
 import fr.diginamic.menupizzeria.dao.PizzaMemDao;
 import fr.diginamic.menupizzeria.model.Pizza;
+import fr.diginamic.menupizzeria.vue.actionlistener.AjouterActionListener;
+import fr.diginamic.menupizzeria.vue.actionlistener.ModifierActionListener;
+import fr.diginamic.menupizzeria.vue.actionlistener.SupprimerActionListener;
 
 /**
- * point d'entrée de l'ihm
+ * l'ihm du restaurant de pizza
  * 
  * @author Kevin.s
  *
@@ -74,94 +74,12 @@ public class Vue extends JFrame {
 		btnModifier = new JButton("Modifier");
 		btnSupprimer = new JButton("Supprimer");
 
-		btnAjouter.addActionListener(btnAjouterActionListener());
+		btnAjouter.addActionListener(new AjouterActionListener(dao, model));
 
-		btnSupprimer.addActionListener(btnSupprimerActionListener());
+		btnSupprimer.addActionListener(new SupprimerActionListener(dao, model, myList));
 
-		btnModifier.addActionListener(btnModifierActionListener());
+		btnModifier.addActionListener(new ModifierActionListener(dao, model, myList));
 
-	}
-
-	/**
-	 * retourne l'ActionListener correspondant au bouton modifier
-	 * 
-	 * @return un ActionListener
-	 */
-	private ActionListener btnModifierActionListener() {
-		return e -> {
-
-			ListSelectionModel selModel = myList.getSelectionModel();
-			int index = selModel.getMinSelectionIndex();
-
-			if (index == -1) {
-				return;
-			}
-
-			Pizza item = model.getElementAt(index);
-			String code = JOptionPane.showInputDialog("code");
-			String nom = JOptionPane.showInputDialog("nom");
-			Double prix = Double.parseDouble((JOptionPane.showInputDialog("prix")));
-			Pizza pizza = null;
-
-			if (code != null && nom != null && prix != null) {
-				pizza = new Pizza(code, nom, prix);
-				dao.updatePizza(item.getCode(), pizza);
-				System.out.println(dao);
-			} else {
-				return;
-			}
-
-			if (pizza != null) {
-				model.remove(index);
-				model.add(index, pizza);
-			}
-		};
-	}
-
-	/**
-	 * retourne l'ActionListener correspondant au bouton supprimer
-	 * 
-	 * @return un ActionListener
-	 */
-	private ActionListener btnSupprimerActionListener() {
-		return event -> {
-
-			ListSelectionModel selModel = myList.getSelectionModel();
-
-			int index = selModel.getMinSelectionIndex();
-
-			if (index >= 0) {
-				dao.deletePizza(model.getElementAt(index).getCode());
-				model.remove(index);
-			}
-		};
-	}
-
-	/**
-	 * retourne un ActionListener correspondant au bouton ajouter
-	 * 
-	 * @return un ActionListener
-	 */
-	private ActionListener btnAjouterActionListener() {
-		return e -> {
-
-			String code = JOptionPane.showInputDialog("code");
-			String nom = JOptionPane.showInputDialog("nom");
-			Double prix = Double.parseDouble((JOptionPane.showInputDialog("prix")));
-
-			Pizza pizza = null;
-
-			if (code != null && nom != null && prix != null) {
-				pizza = new Pizza(code, nom, prix);
-				dao.saveNewPizza(pizza);
-			} else {
-				return;
-			}
-
-			if (pizza != null) {
-				model.addElement(pizza);
-			}
-		};
 	}
 
 	/**
@@ -205,18 +123,4 @@ public class Vue extends JFrame {
 
 	}
 
-	/**
-	 * point d'entrée pour l'éxecution de l'interface
-	 * 
-	 * @param args
-	 *            non utilisé
-	 */
-	public static void main(String[] args) {
-
-		EventQueue.invokeLater(() -> {
-
-			Vue vue = new Vue();
-			vue.setVisible(true);
-		});
-	}
 }

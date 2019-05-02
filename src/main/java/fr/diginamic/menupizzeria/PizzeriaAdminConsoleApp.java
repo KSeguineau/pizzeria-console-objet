@@ -2,6 +2,7 @@ package fr.diginamic.menupizzeria;
 
 import java.util.Scanner;
 
+import fr.diginamic.menupizzeria.dao.IPizzaDao;
 import fr.diginamic.menupizzeria.dao.PizzaMemDao;
 import fr.diginamic.menupizzeria.service.MenuService;
 
@@ -16,7 +17,7 @@ public class PizzeriaAdminConsoleApp {
 	public static void main(String[] args) {
 
 		Scanner scanner = new Scanner(System.in);
-		PizzaMemDao dao = PizzaMemDao.getInstance();
+		IPizzaDao dao = PizzaMemDao.getInstance();
 		boolean sortir = false;
 
 		while (!sortir) {

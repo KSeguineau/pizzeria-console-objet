@@ -2,7 +2,7 @@ package fr.diginamic.menupizzeria.service;
 
 import java.util.Scanner;
 
-import fr.diginamic.menupizzeria.dao.PizzaMemDao;
+import fr.diginamic.menupizzeria.dao.IPizzaDao;
 
 /**
  * Classe représentant le service de suppression d'une pizza
@@ -13,7 +13,7 @@ import fr.diginamic.menupizzeria.dao.PizzaMemDao;
 public class SupprimerPizzaService extends MenuService {
 
 	@Override
-	public void executeUC(Scanner scanner, PizzaMemDao dao) {
+	public void executeUC(Scanner scanner, IPizzaDao dao) {
 		System.out.println("Veuillez choiser le code de la pizza à supprimer");
 		String code = scanner.next();
 

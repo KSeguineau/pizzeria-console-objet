@@ -2,7 +2,7 @@ package fr.diginamic.menupizzeria.service;
 
 import java.util.Scanner;
 
-import fr.diginamic.menupizzeria.dao.PizzaMemDao;
+import fr.diginamic.menupizzeria.dao.IPizzaDao;
 import fr.diginamic.menupizzeria.exception.PrixException;
 
 /**
@@ -14,7 +14,7 @@ import fr.diginamic.menupizzeria.exception.PrixException;
 public class ModifierPizzaService extends MenuService {
 
 	@Override
-	public void executeUC(Scanner scanner, PizzaMemDao dao) {
+	public void executeUC(Scanner scanner, IPizzaDao dao) {
 		dao.findAllPizzas().forEach(p -> System.out.println(p));
 		System.out.println("Veuillez choisir le code de la pizza à modifier");
 		String code = scanner.next();

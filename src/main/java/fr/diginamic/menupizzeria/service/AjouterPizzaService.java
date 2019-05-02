@@ -2,8 +2,9 @@ package fr.diginamic.menupizzeria.service;
 
 import java.util.Scanner;
 
-import fr.diginamic.menupizzeria.dao.PizzaMemDao;
+import fr.diginamic.menupizzeria.dao.IPizzaDao;
 import fr.diginamic.menupizzeria.exception.PrixException;
+import fr.diginamic.menupizzeria.model.Pizza;
 
 /**
  * Classe représentant le service d'ajout de pizza
@@ -14,10 +15,13 @@ import fr.diginamic.menupizzeria.exception.PrixException;
 public class AjouterPizzaService extends MenuService {
 
 	@Override
-	public void executeUC(Scanner scanner, PizzaMemDao dao) {
+	public void executeUC(Scanner scanner, IPizzaDao dao) {
 
 		try {
-			dao.saveNewPizza(creationPizza(scanner));
+			Pizza pizza = creationPizza(scanner);
+			if (dao.pizzaExists(pizza.getCode()) == false) {
+				dao.saveNewPizza(pizza);
+			}
 		} catch (PrixException e) {
 			System.out.println(e.getMessage());
 		}

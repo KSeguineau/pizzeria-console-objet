@@ -2,7 +2,7 @@ package fr.diginamic.menupizzeria.service;
 
 import java.util.Scanner;
 
-import fr.diginamic.menupizzeria.dao.PizzaMemDao;
+import fr.diginamic.menupizzeria.dao.IPizzaDao;
 import fr.diginamic.menupizzeria.exception.PrixException;
 import fr.diginamic.menupizzeria.model.Pizza;
 
@@ -22,7 +22,7 @@ public abstract class MenuService {
 	 * @param dao
 	 *            objet stockant et manipulant des pizzas
 	 */
-	public abstract void executeUC(Scanner scanner, PizzaMemDao dao);
+	public abstract void executeUC(Scanner scanner, IPizzaDao dao);
 
 	/**
 	 * retourne une classe qui correspond au service demandé
