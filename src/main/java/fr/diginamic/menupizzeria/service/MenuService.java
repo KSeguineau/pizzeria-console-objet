@@ -3,6 +3,7 @@ package fr.diginamic.menupizzeria.service;
 import java.util.Scanner;
 
 import fr.diginamic.menupizzeria.dao.PizzaMemDao;
+import fr.diginamic.menupizzeria.exception.PrixException;
 import fr.diginamic.menupizzeria.model.Pizza;
 
 /**
@@ -54,15 +55,19 @@ public abstract class MenuService {
 	 *            Scanner qui récupere les entrées de l'utilisateur
 	 * @return une pizza
 	 */
-	public Pizza creationPizza(Scanner scan) {
+	public Pizza creationPizza(Scanner scan) throws PrixException {
 
 		System.out.println("Veuillez saisir le code:");
 		String code = scan.next();
 		System.out.println("Veuillez saisir le nom (sans espace)");
 		String nom = scan.next();
 		System.out.println("Veuillez saisir le prix:");
-		double prix = Double.parseDouble(scan.next());
-		return new Pizza(code, nom, prix);
+		try {
+			double prix = Double.parseDouble(scan.next());
+			return new Pizza(code, nom, prix);
+		} catch (NumberFormatException e) {
+			throw new PrixException();
+		}
 
 	}
 
