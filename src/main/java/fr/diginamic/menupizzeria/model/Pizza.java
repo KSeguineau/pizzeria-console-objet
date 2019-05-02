@@ -9,7 +9,7 @@ package fr.diginamic.menupizzeria.model;
 public class Pizza {
 
 	/** compteur : int */
-	static int compteur = 0;
+	private static int compteur = 0;
 	/** id : int */
 	private int id;
 	/** code : String */

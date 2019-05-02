@@ -1,10 +1,11 @@
 package fr.diginamic.menupizzeria.dao;
 
+import java.io.Serializable;
 import java.util.List;
 
 import fr.diginamic.menupizzeria.model.Pizza;
 
-public interface IPizzaDao {
+public interface IPizzaDao extends Serializable {
 
 	/**
 	 * retourne la liste de pizza

@@ -16,7 +16,7 @@ public class PizzeriaAdminConsoleApp {
 	public static void main(String[] args) {
 
 		Scanner scanner = new Scanner(System.in);
-		PizzaMemDao dao = new PizzaMemDao();
+		PizzaMemDao dao = PizzaMemDao.getInstance();
 		boolean sortir = false;
 
 		while (!sortir) {
