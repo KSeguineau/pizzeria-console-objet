@@ -3,8 +3,10 @@ package fr.diginamic.menupizzeria.service;
 import java.util.Scanner;
 
 import fr.diginamic.menupizzeria.dao.IPizzaDao;
+import fr.diginamic.menupizzeria.exception.CategoriePizzaInconnueException;
 import fr.diginamic.menupizzeria.exception.PrixException;
 import fr.diginamic.menupizzeria.exception.StockageExcepion;
+import fr.diginamic.menupizzeria.model.CategoriePizza;
 import fr.diginamic.menupizzeria.model.Pizza;
 
 /**
@@ -56,8 +58,14 @@ public abstract class MenuService {
 	 * @param scan
 	 *            Scanner qui récupere les entrées de l'utilisateur
 	 * @return une pizza
+	 * @throws PrixException
+	 *             si l'utilisateur entre un prix qui ne peut pas être parser en
+	 *             double
+	 * @throws CategoriePizzaInconnueException
+	 *             si l'utilisateur indique une categorie de pizza qui n'éxiste
+	 *             pas
 	 */
-	public Pizza creationPizza(Scanner scan) throws PrixException {
+	public Pizza creationPizza(Scanner scan) throws PrixException, CategoriePizzaInconnueException {
 
 		System.out.println("Veuillez saisir le code:");
 		String code = scan.next();
@@ -66,9 +74,13 @@ public abstract class MenuService {
 		System.out.println("Veuillez saisir le prix:");
 		try {
 			double prix = Double.parseDouble(scan.next());
-			return new Pizza(code, nom, prix);
+			System.out.println("Veuillez saisir la categorie de la pizza en majuscule");
+			CategoriePizza categorie = CategoriePizza.valueOf(scan.next());
+			return new Pizza(code, nom, prix, categorie);
 		} catch (NumberFormatException e) {
 			throw new PrixException();
+		} catch (IllegalArgumentException e) {
+			throw new CategoriePizzaInconnueException("Aucune Pizza de cette categorie n'a été trouvée");
 		}
 
 	}

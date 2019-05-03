@@ -1,4 +1,4 @@
-package fr.diginamic.menupizzeria.vue.utils;
+package fr.diginamic.menupizzeria.utils;
 
 import javax.swing.JOptionPane;
 

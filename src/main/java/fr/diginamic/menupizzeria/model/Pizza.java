@@ -1,5 +1,8 @@
 package fr.diginamic.menupizzeria.model;
 
+import fr.diginamic.menupizzeria.utils.StringUtils;
+import fr.diginamic.menupizzeria.utils.ToString;
+
 /**
  * Classe representant une pizza
  * 
@@ -13,11 +16,18 @@ public class Pizza {
 	/** id : int */
 	private int id;
 	/** code : String */
+	@ToString(upperCase = true, after = " ->")
 	private String code;
 	/** libelle : String */
+	@ToString(before = " ", after = " ")
 	private String libelle;
 	/** prix : double */
+	@ToString(before = "(", after = "€)")
 	private double prix;
+
+	/** categorie : CategoriePizza */
+	@ToString(before = "(", after = ")")
+	CategoriePizza categorie;
 
 	/**
 	 * Constructeur
@@ -29,11 +39,12 @@ public class Pizza {
 	 * @param prix
 	 *            prix de la pizza
 	 */
-	public Pizza(String code, String libelle, double prix) {
+	public Pizza(String code, String libelle, double prix, CategoriePizza categorie) {
 		super();
 		this.code = code;
 		this.libelle = libelle;
 		this.prix = prix;
+		this.categorie = categorie;
 		id = compteur;
 		compteur++;
 	}
@@ -60,7 +71,8 @@ public class Pizza {
 
 	@Override
 	public String toString() {
-		return code + " -> " + libelle + "(" + prix + "€)";
+		// return code + " -> " + libelle + "(" + prix + "€)";
+		return StringUtils.getToString(this);
 	}
 
 	@Override

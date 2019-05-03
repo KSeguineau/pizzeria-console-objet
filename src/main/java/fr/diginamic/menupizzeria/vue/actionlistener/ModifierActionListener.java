@@ -9,8 +9,9 @@ import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 
 import fr.diginamic.menupizzeria.dao.PizzaMemDao;
+import fr.diginamic.menupizzeria.model.CategoriePizza;
 import fr.diginamic.menupizzeria.model.Pizza;
-import fr.diginamic.menupizzeria.vue.utils.OptionPaneUtils;
+import fr.diginamic.menupizzeria.utils.OptionPaneUtils;
 
 /**
  * ActionListener correspondant au bouton modifier
@@ -57,12 +58,17 @@ public class ModifierActionListener implements ActionListener {
 		String code = JOptionPane.showInputDialog("code");
 		String nom = JOptionPane.showInputDialog("nom");
 		Double prix = OptionPaneUtils.getPrix();
-
-		if (code != null && nom != null && prix != null) {
-			Pizza pizza = new Pizza(code, nom, prix);
-			dao.updatePizza(item.getCode(), pizza);
-			model.remove(index);
-			model.add(index, pizza);
+		// TODO faire un menu liste pour récupérer l'énum
+		String categorie = JOptionPane.showInputDialog("catégorie en majuscule");
+		try {
+			if (code != null && nom != null && prix != null) {
+				Pizza pizza = new Pizza(code, nom, prix, CategoriePizza.valueOf(categorie));
+				dao.updatePizza(item.getCode(), pizza);
+				model.remove(index);
+				model.add(index, pizza);
+			}
+		} catch (IllegalArgumentException ex) {
+			System.out.println("catégorie inconnu");
 		}
 	}
 

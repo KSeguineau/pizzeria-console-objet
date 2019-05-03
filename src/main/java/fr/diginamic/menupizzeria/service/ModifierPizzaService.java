@@ -3,6 +3,7 @@ package fr.diginamic.menupizzeria.service;
 import java.util.Scanner;
 
 import fr.diginamic.menupizzeria.dao.IPizzaDao;
+import fr.diginamic.menupizzeria.exception.CategoriePizzaInconnueException;
 import fr.diginamic.menupizzeria.exception.PrixException;
 import fr.diginamic.menupizzeria.exception.StockageExcepion;
 import fr.diginamic.menupizzeria.exception.UpdatePizzaException;
@@ -23,7 +24,7 @@ public class ModifierPizzaService extends MenuService {
 		if (dao.pizzaExists(code)) {
 			try {
 				dao.updatePizza(code, creationPizza(scanner));
-			} catch (PrixException e) {
+			} catch (PrixException | CategoriePizzaInconnueException e) {
 				System.out.println(e.getMessage());
 			}
 		} else {
