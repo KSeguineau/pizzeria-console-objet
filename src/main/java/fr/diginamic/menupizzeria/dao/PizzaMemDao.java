@@ -51,13 +51,15 @@ public class PizzaMemDao implements IPizzaDao {
 
 	@Override
 	public void saveNewPizza(Pizza pizza) {
-		listePizza.add(pizza);
+		if (pizza != null) {
+			listePizza.add(pizza);
+		}
 
 	}
 
 	@Override
 	public void updatePizza(String codePizza, Pizza pizza) {
-		if (pizzaExists(codePizza)) {
+		if (pizzaExists(codePizza) && pizza != null) {
 			for (int i = 0; i < listePizza.size(); i++) {
 				if (listePizza.get(i).getCode().equals(codePizza)) {
 					listePizza.set(i, pizza);
