@@ -34,6 +34,7 @@ public class ValidatorPizzaUtils {
 		if (field.getType().getName().equals("double")) {
 			try {
 				Double valeur = Double.parseDouble(field.get(obj).toString());
+
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 

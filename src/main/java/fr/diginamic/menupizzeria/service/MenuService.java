@@ -2,6 +2,9 @@ package fr.diginamic.menupizzeria.service;
 
 import java.util.Scanner;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import fr.diginamic.menupizzeria.dao.IPizzaDao;
 import fr.diginamic.menupizzeria.exception.CategoriePizzaInconnueException;
 import fr.diginamic.menupizzeria.exception.PrixException;
@@ -16,6 +19,9 @@ import fr.diginamic.menupizzeria.model.Pizza;
  *
  */
 public abstract class MenuService {
+
+	/** SERVICE_LOG : Logger des services */
+	protected static final Logger SERVICE_LOG = LoggerFactory.getLogger(MenuService.class);
 
 	/**
 	 * méthode executant un service

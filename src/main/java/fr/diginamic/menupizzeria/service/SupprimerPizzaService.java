@@ -21,6 +21,7 @@ public class SupprimerPizzaService extends MenuService {
 
 		if (dao.pizzaExists(code)) {
 			dao.deletePizza(code);
+			SERVICE_LOG.info("supression de la pizza " + code);
 		} else {
 			throw new DeletePizzaException("Aucune pizza avec ce code n'à été trouvée");
 		}

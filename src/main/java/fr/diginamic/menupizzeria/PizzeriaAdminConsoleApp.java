@@ -2,6 +2,9 @@ package fr.diginamic.menupizzeria;
 
 import java.util.Scanner;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import fr.diginamic.menupizzeria.dao.IPizzaDao;
 import fr.diginamic.menupizzeria.dao.PizzaMemDao;
 import fr.diginamic.menupizzeria.exception.StockageExcepion;
@@ -15,8 +18,12 @@ import fr.diginamic.menupizzeria.service.MenuService;
  */
 public class PizzeriaAdminConsoleApp {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) {// TODO faire DateUtils pour
+											// affichage de la date lisible
 
+		long début = System.currentTimeMillis();
+		final Logger MAIN_LOG = LoggerFactory.getLogger(PizzeriaAdminConsoleApp.class);
+		MAIN_LOG.info("démarrage " + début);
 		Scanner scanner = new Scanner(System.in);
 		IPizzaDao dao = PizzaMemDao.getInstance();
 		boolean sortir = false;
@@ -29,6 +36,7 @@ public class PizzeriaAdminConsoleApp {
 				try {
 					MenuService.factory(choix).executeUC(scanner, dao);
 				} catch (StockageExcepion e) {
+					MAIN_LOG.error("error: " + e.getMessage());
 					System.out.println(e.getMessage());
 				}
 			} else if (choix == 99) {
@@ -40,6 +48,8 @@ public class PizzeriaAdminConsoleApp {
 
 		}
 		scanner.close();
+		long fin = System.currentTimeMillis();
+		MAIN_LOG.info("fin du programme: " + fin + " temps d'éxécution: " + (fin - début));
 	}
 
 	/**

@@ -24,6 +24,7 @@ public class ModifierPizzaService extends MenuService {
 		if (dao.pizzaExists(code)) {
 			try {
 				dao.updatePizza(code, creationPizza(scanner));
+				SERVICE_LOG.info("modification de la pizza " + code);
 			} catch (PrixException | CategoriePizzaInconnueException e) {
 				System.out.println(e.getMessage());
 			}

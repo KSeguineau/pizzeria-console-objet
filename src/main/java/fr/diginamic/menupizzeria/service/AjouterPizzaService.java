@@ -26,11 +26,13 @@ public class AjouterPizzaService extends MenuService {
 			if (dao.pizzaExists(pizza.getCode()) == false) {
 				ValidatorPizzaUtils.validate(pizza);
 				dao.saveNewPizza(pizza);
+				SERVICE_LOG.info("ajout de la pizza " + pizza.toString());
 			} else {
 				throw new SavePizzaException("Une pizza avec ce code existe déja");
 			}
 		} catch (PrixException | CategoriePizzaInconnueException e) {
 			System.out.println(e.getMessage());
+			SERVICE_LOG.error(e.getMessage());
 		}
 	}
 
