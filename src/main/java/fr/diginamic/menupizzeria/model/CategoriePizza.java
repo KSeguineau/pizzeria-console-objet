@@ -1,8 +1,19 @@
 package fr.diginamic.menupizzeria.model;
 
+/**
+ * Énumeration representant les différentes catégories de pizza
+ * 
+ * @author Kevin.s
+ *
+ */
 public enum CategoriePizza {
 
-	VIANDE("Viande"), POISSON("Poisson"), SANS_VIANDE("Sans Viande");
+	/** VIANDE : CategoriePizza */
+	VIANDE("Viande"),
+	/** POISSON : CategoriePizza */
+	POISSON("Poisson"),
+	/** SANS_VIANDE : CategoriePizza */
+	SANS_VIANDE("Sans Viande");
 
 	/** nom : String */
 	private String nom;
@@ -24,16 +35,6 @@ public enum CategoriePizza {
 	 */
 	public String getNom() {
 		return nom;
-	}
-
-	/**
-	 * Setters
-	 * 
-	 * @param nom
-	 *            the nom to set
-	 */
-	public void setNom(String nom) {
-		this.nom = nom;
 	}
 
 }

@@ -1,5 +1,7 @@
 package fr.diginamic.menupizzeria.model;
 
+import fr.diginamic.menupizzeria.utils.RuleCode;
+import fr.diginamic.menupizzeria.utils.RulePrix;
 import fr.diginamic.menupizzeria.utils.StringUtils;
 import fr.diginamic.menupizzeria.utils.ToString;
 
@@ -17,12 +19,14 @@ public class Pizza {
 	private int id;
 	/** code : String */
 	@ToString(upperCase = true, after = " ->")
+	@RuleCode(longueur = 3)
 	private String code;
 	/** libelle : String */
 	@ToString(before = " ", after = " ")
 	private String libelle;
 	/** prix : double */
 	@ToString(before = "(", after = "€)")
+	@RulePrix(min = 0, max = 20)
 	private double prix;
 
 	/** categorie : CategoriePizza */

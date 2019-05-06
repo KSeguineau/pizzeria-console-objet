@@ -8,6 +8,7 @@ import fr.diginamic.menupizzeria.exception.PrixException;
 import fr.diginamic.menupizzeria.exception.SavePizzaException;
 import fr.diginamic.menupizzeria.exception.StockageExcepion;
 import fr.diginamic.menupizzeria.model.Pizza;
+import fr.diginamic.menupizzeria.utils.ValidatorPizzaUtils;
 
 /**
  * Classe représentant le service d'ajout de pizza
@@ -23,6 +24,7 @@ public class AjouterPizzaService extends MenuService {
 		try {
 			Pizza pizza = creationPizza(scanner);
 			if (dao.pizzaExists(pizza.getCode()) == false) {
+				ValidatorPizzaUtils.validate(pizza);
 				dao.saveNewPizza(pizza);
 			} else {
 				throw new SavePizzaException("Une pizza avec ce code existe déja");

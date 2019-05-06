@@ -4,6 +4,12 @@ import java.awt.EventQueue;
 
 import fr.diginamic.menupizzeria.vue.Vue;
 
+/**
+ * IHM de la pizzeria
+ * 
+ * @author Kevin.s
+ *
+ */
 public class PizzeriaIhmAdminConsoleApp {
 
 	/**
