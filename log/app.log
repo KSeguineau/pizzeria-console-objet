@@ -7,3 +7,9 @@
 12:27:20.416 [main] INFO  f.d.m.PizzeriaAdminConsoleApp - démarrage 1557138440226
 12:27:22.995 [main] INFO  f.d.menupizzeria.service.MenuService - l'utilisateur affiche la liste de pizza
 12:27:28.310 [main] INFO  f.d.m.PizzeriaAdminConsoleApp - fin du programme: 1557138448310 temps d'éxécution: 8084
+10:43:06.034 [main] INFO  f.d.menupizzeria.service.MenuService - ajout de la pizza TEST -> test (12.0€)(VIANDE)
+11:10:12.249 [main] INFO  f.d.menupizzeria.service.MenuService - ajout de la pizza TEST -> test (12.0€)(VIANDE)
+11:10:12.252 [main] ERROR f.d.menupizzeria.service.MenuService - Aucune Pizza de cette categorie n'a été trouvée
+11:10:47.514 [main] INFO  f.d.menupizzeria.service.MenuService - ajout de la pizza TEST -> test (12.0€)(VIANDE)
+11:10:47.517 [main] ERROR f.d.menupizzeria.service.MenuService - Aucune Pizza de cette categorie n'a été trouvée
+11:10:47.518 [main] ERROR f.d.menupizzeria.service.MenuService - une erreur est survenue lors de la récupération du prix
