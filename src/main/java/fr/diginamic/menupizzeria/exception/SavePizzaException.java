@@ -7,7 +7,7 @@ package fr.diginamic.menupizzeria.exception;
  * @author Kevin.s
  *
  */
-public class SavePizzaException extends StockageExcepion {
+public class SavePizzaException extends StockageException {
 
 	/**
 	 * Constructeur

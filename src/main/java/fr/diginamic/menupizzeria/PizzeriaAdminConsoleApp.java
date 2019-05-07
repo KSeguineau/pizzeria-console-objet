@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import fr.diginamic.menupizzeria.dao.IPizzaDao;
 import fr.diginamic.menupizzeria.dao.PizzaMemDao;
-import fr.diginamic.menupizzeria.exception.StockageExcepion;
+import fr.diginamic.menupizzeria.exception.StockageException;
 import fr.diginamic.menupizzeria.service.MenuService;
 
 /**
@@ -35,7 +35,7 @@ public class PizzeriaAdminConsoleApp {
 			if (choix == 1 || choix == 2 || choix == 3 || choix == 4) {
 				try {
 					MenuService.factory(choix).executeUC(scanner, dao);
-				} catch (StockageExcepion e) {
+				} catch (StockageException e) {
 					MAIN_LOG.error("error: " + e.getMessage());
 					System.out.println(e.getMessage());
 				}

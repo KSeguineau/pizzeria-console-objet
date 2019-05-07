@@ -6,14 +6,14 @@ package fr.diginamic.menupizzeria.exception;
  * @author Kevin.s
  *
  */
-public abstract class StockageExcepion extends Exception {
+public abstract class StockageException extends Exception {
 
 	/**
 	 * Constructeur
 	 * 
 	 * @param arg0
 	 */
-	public StockageExcepion(String arg0) {
+	public StockageException(String arg0) {
 		super(arg0);
 	}
 

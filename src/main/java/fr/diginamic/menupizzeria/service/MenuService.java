@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import fr.diginamic.menupizzeria.dao.IPizzaDao;
 import fr.diginamic.menupizzeria.exception.CategoriePizzaInconnueException;
 import fr.diginamic.menupizzeria.exception.PrixException;
-import fr.diginamic.menupizzeria.exception.StockageExcepion;
+import fr.diginamic.menupizzeria.exception.StockageException;
 import fr.diginamic.menupizzeria.model.CategoriePizza;
 import fr.diginamic.menupizzeria.model.Pizza;
 
@@ -30,9 +30,9 @@ public abstract class MenuService {
 	 *            permet de récuperer les entrées de l'utilisateur
 	 * @param dao
 	 *            objet stockant et manipulant des pizzas
-	 * @throws StockageExcepion
+	 * @throws StockageException
 	 */
-	public abstract void executeUC(Scanner scanner, IPizzaDao dao) throws StockageExcepion;
+	public abstract void executeUC(Scanner scanner, IPizzaDao dao) throws StockageException;
 
 	/**
 	 * retourne une classe qui correspond au service demandé
@@ -71,7 +71,7 @@ public abstract class MenuService {
 	 *             si l'utilisateur indique une categorie de pizza qui n'éxiste
 	 *             pas
 	 */
-	public Pizza creationPizza(Scanner scan) throws PrixException, CategoriePizzaInconnueException {
+	protected Pizza creationPizza(Scanner scan) throws PrixException, CategoriePizzaInconnueException {
 
 		System.out.println("Veuillez saisir le code:");
 		String code = scan.next();

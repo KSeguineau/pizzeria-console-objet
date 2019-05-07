@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import fr.diginamic.menupizzeria.dao.IPizzaDao;
 import fr.diginamic.menupizzeria.exception.DeletePizzaException;
-import fr.diginamic.menupizzeria.exception.StockageExcepion;
+import fr.diginamic.menupizzeria.exception.StockageException;
 
 /**
  * Classe représentant le service de suppression d'une pizza
@@ -15,7 +15,7 @@ import fr.diginamic.menupizzeria.exception.StockageExcepion;
 public class SupprimerPizzaService extends MenuService {
 
 	@Override
-	public void executeUC(Scanner scanner, IPizzaDao dao) throws StockageExcepion {
+	public void executeUC(Scanner scanner, IPizzaDao dao) throws StockageException {
 		System.out.println("Veuillez choiser le code de la pizza à supprimer");
 		String code = scanner.next();
 

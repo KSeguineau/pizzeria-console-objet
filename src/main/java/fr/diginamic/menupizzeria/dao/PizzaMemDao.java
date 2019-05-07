@@ -18,7 +18,7 @@ public class PizzaMemDao implements IPizzaDao {
 	/** serialVersionUID : long */
 	private static final long serialVersionUID = 2341274652240553005L;
 	/** listePizza : List<Pizza> */
-	List<Pizza> listePizza;
+	private List<Pizza> listePizza;
 
 	private static PizzaMemDao instanceDao = null;
 
@@ -42,6 +42,10 @@ public class PizzaMemDao implements IPizzaDao {
 			instanceDao = new PizzaMemDao();
 		}
 		return instanceDao;
+	}
+
+	public static void resetInstance() {
+		instanceDao = new PizzaMemDao();
 	}
 
 	@Override
