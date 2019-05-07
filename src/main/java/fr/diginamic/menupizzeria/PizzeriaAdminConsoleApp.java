@@ -17,13 +17,12 @@ import fr.diginamic.menupizzeria.service.MenuService;
  *
  */
 public class PizzeriaAdminConsoleApp {
-
-	public static void main(String[] args) {// TODO faire DateUtils pour
-											// affichage de la date lisible
+	// TODO faire DateUtils pour affichage de la date lisible
+	public static void main(String[] args) {
 
 		long début = System.currentTimeMillis();
 		final Logger MAIN_LOG = LoggerFactory.getLogger(PizzeriaAdminConsoleApp.class);
-		MAIN_LOG.info("démarrage " + début);
+		MAIN_LOG.info("démarrage {}", début);
 		Scanner scanner = new Scanner(System.in);
 		IPizzaDao dao = PizzaMemDao.getInstance();
 		boolean sortir = false;
@@ -36,7 +35,7 @@ public class PizzeriaAdminConsoleApp {
 				try {
 					MenuService.factory(choix).executeUC(scanner, dao);
 				} catch (StockageException e) {
-					MAIN_LOG.error("error: " + e.getMessage());
+					MAIN_LOG.error("error: {}", e.getMessage());
 					System.out.println(e.getMessage());
 				}
 			} else if (choix == 99) {
@@ -49,7 +48,7 @@ public class PizzeriaAdminConsoleApp {
 		}
 		scanner.close();
 		long fin = System.currentTimeMillis();
-		MAIN_LOG.info("fin du programme: " + fin + " temps d'éxécution: " + (fin - début));
+		MAIN_LOG.info("fin du programme:{} temps d'éxécution:{} ", fin, (fin - début));
 	}
 
 	/**
