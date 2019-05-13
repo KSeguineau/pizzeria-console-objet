@@ -91,4 +91,25 @@ public class PizzaMemDaoTest {
 		assertFalse(dao.pizzaExists(null));
 	}
 
+	@Test
+	public void testFindPizzaByCode1() {
+		PizzaMemDao dao = PizzaMemDao.getInstance();
+		Pizza test = dao.findPizzaByCode("PEP");
+		assertEquals(dao.findAllPizzas().get(0), test);
+	}
+
+	@Test
+	public void testFindPizzaByCode2() {
+		PizzaMemDao dao = PizzaMemDao.getInstance();
+		Pizza test = dao.findPizzaByCode("AAAAAAAAA");
+		assertEquals(null, test);
+	}
+
+	@Test
+	public void testFindPizzaByCode3() {
+		PizzaMemDao dao = PizzaMemDao.getInstance();
+		Pizza test = dao.findPizzaByCode(null);
+		assertEquals(null, test);
+	}
+
 }
