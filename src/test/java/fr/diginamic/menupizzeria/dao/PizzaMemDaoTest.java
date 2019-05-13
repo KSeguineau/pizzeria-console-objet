@@ -11,7 +11,6 @@ import fr.diginamic.menupizzeria.model.CategoriePizza;
 import fr.diginamic.menupizzeria.model.Pizza;
 
 public class PizzaMemDaoTest {
-	// TODO findPizzaByCode
 	@Before
 	public void reset() {
 		PizzaMemDao.resetInstance();
